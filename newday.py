@@ -7,11 +7,18 @@ from typing import Any
 with open("day{no}.txt") as f:
     inp = f.read()
 
+def split():
+    global inp
+    inp = [x.strip() for x in inp.splitlines(False)]
+
 def section_1() -> Any:
     return None
 
 def section_2() -> Any:
     return None
+
+# note to self: if todays input is line seperated, uncomment the following line
+#split()
 
 print(f"section 1 answer: {{section_1()}}")
 print(f"section 2 answer: {{section_2()}}")
