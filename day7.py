@@ -10,14 +10,19 @@ def split():
 bags = {}
 
 for line in inp:
-    name, contents = line[:-1].split("s contain ", 1)
+    name, contents = line[:-1].split(" contain ", 1)
     if contents == "no other bags":
         items = {}
     else:
-        items = contents.split(", ")
-        items = [x.split(" ", 1) for x in items]
-        items = {x.replace("bags", "bag"): int(n) for n, x in items}
-    bags[name] = items
+        t = contents.split(",")
+        items = {}
+        for item in t:
+            item = item.split()
+            no = int(item[0])
+            rest = " ".join(item[1:]).replace("bags", "bag").strip()
+            items[rest] = no
+
+    bags[name.replace("bags", "bag").strip()] = items
 
 def find_golden_bags(bag):
     if bag == "shiny gold bag":
